@@ -1456,3 +1456,41 @@ nav {
     50%       { transform: translateY(-50%) translateX(-6px); }
   }
 }
+
+
+
+/* ==================== MOBILE SCROLL OVERRIDE ==================== */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  section {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    pointer-events: all;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+  }
+
+  section.section-active,
+  section.section-exit {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+/* Landscape phone */
+@media (max-width: 768px) and (orientation: landscape) {
+  section {
+    min-height: 100svh;
+    padding-top: 5rem;
+  }
+
+  #hero {
+    padding: 5rem 2rem 2rem;
+  }
+}

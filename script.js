@@ -102,23 +102,30 @@ document.addEventListener('keydown', (e) => {
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    const targetId    = link.getAttribute('href').slice(1);
+    const targetId = link.getAttribute('href').slice(1);
+
+    if (!isDesktop()) {
+      // Mobile — smooth scroll to section
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    // Desktop — section transition
     const targetIndex = sections.findIndex(s => s.id === targetId);
     if (targetIndex !== -1) goToSection(targetIndex);
   });
 });
 
 // ---- Mobile: vertical swipe ----
-let touchStartX = 0;
-let touchStartY = 0;
-
 document.addEventListener('touchstart', (e) => {
+  if (!isDesktop()) return;
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
 }, { passive: true });
 
 document.addEventListener('touchend', (e) => {
-  if (isDesktop()) return;
+  if (!isDesktop()) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
   if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
@@ -133,11 +140,13 @@ sections.forEach((section, i) => {
     if (isDesktop()) return;
     if (isTransitioning) return;
 
-    const atBottom = section.scrollHeight - section.scrollTop - section.clientHeight < 5;
-    const atTop    = section.scrollTop < 5;
+    const scrolled  = section.scrollTop;
+    const maxScroll = section.scrollHeight - section.clientHeight;
 
-    if (atBottom) goToSection(i + 1);
-    if (atTop && i > 0) goToSection(i - 1);
+    if (maxScroll < 5) return;
+
+    if (scrolled >= maxScroll - 5) goToSection(i + 1);
+    else if (scrolled <= 5 && i > 0) goToSection(i - 1);
   });
 });
 
