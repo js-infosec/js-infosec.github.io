@@ -971,22 +971,41 @@ section.section-active {
 
 /* ==================== LANDSCAPE PHONE ==================== */
 @media (max-width: 768px) and (orientation: landscape) {
+  
+  header {
+    padding: 0.5rem 2rem 0.5rem 0;
+    height: 4rem;
+  }
+
   section {
     min-height: 100svh;
-    padding-top: calc(var(--header-h) + 0.5rem);
+    padding: 4.5rem 1.5rem 2rem;
+    justify-content: flex-start;
   }
 
   #hero {
     flex-direction: row;
     text-align: left;
     align-items: center;
+    justify-content: space-between;
     gap: 1.5rem;
-    padding: calc(var(--header-h) + 0.5rem) 1.5rem 1.5rem;
+    padding: 4.5rem 1.5rem 2rem;
+    min-height: 100svh;
   }
 
-  #hero-text { align-items: flex-start; max-width: 60%; }
-  #hero h1 { font-size: 2rem; }
-  #hero h4 { font-size: 1rem; }
+  #hero-text {
+    align-items: flex-start;
+    max-width: 55%;
+  }
+
+  #hero h1 { font-size: 1.8rem; }
+  #hero h4 { font-size: 0.95rem; }
+  #hero p  { font-size: 0.85rem; max-width: 100%; }
+
+  #hero button {
+    padding: 0.5rem 1.4rem;
+    font-size: 0.9rem;
+  }
 
   #hero-img {
     display: flex;
@@ -997,12 +1016,24 @@ section.section-active {
   }
 
   #hero-img img {
-    height: 80%;
+    height: 85%;
     width: auto;
     object-fit: contain;
+    object-position: bottom;
   }
 
-  .about-first, .about-role { font-size: 1.8rem; }
+  .about-first,
+  .about-role { font-size: 1.6rem; }
+
+  .about-bio { font-size: 13px; }
+
+  .skills-title { font-size: 1.8rem; }
+  .skills-title span { font-size: 1.5rem; }
+
+  .proj-title { font-size: 1.8rem; }
+  .proj-title span { font-size: 1.5rem; }
+
+  .contact-title { font-size: 2rem; }
 }
 
 /* ==================== MID SIZE (769px - 1024px) ==================== */
