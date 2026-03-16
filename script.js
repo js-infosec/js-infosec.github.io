@@ -30,7 +30,7 @@ navMenu.querySelectorAll('a').forEach(link => {
 // ==================== DEVICE DETECTION ====================
 const isDesktop = () => window.innerWidth >= 769;
 
-// ==================== SCROLL SYSTEM ====================
+// ==================== SCROLL SYSTEM (DESKTOP ONLY) ====================
 const sections = Array.from(document.querySelectorAll('section'));
 const arrowPrev = document.getElementById('arrow-prev');
 const arrowNext = document.getElementById('arrow-next');
@@ -39,7 +39,6 @@ let isTransitioning = false;
 const TRANSITION_DURATION = 600;
 
 function updateArrows() {
-  if (!isDesktop()) return;
   arrowPrev.classList.remove('hidden');
   arrowPrev.classList.add('bounce');
   arrowNext.classList.remove('hidden');
@@ -59,7 +58,6 @@ function resetAnimations(section) {
 }
 
 function goToSection(targetIndex) {
-  if (!isDesktop()) return;
   if (isTransitioning) return;
   if (targetIndex < 0) targetIndex = sections.length - 1;
   if (targetIndex >= sections.length) targetIndex = 0;
@@ -85,7 +83,7 @@ function goToSection(targetIndex) {
 arrowPrev.addEventListener('click', () => goToSection(currentIndex - 1));
 arrowNext.addEventListener('click', () => goToSection(currentIndex + 1));
 
-// ---- Arrow key navigation (desktop only) ----
+// ---- Arrow key navigation ----
 document.addEventListener('keydown', (e) => {
   if (!isDesktop()) return;
   if (e.key === 'ArrowRight') goToSection(currentIndex + 1);
@@ -111,44 +109,38 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 // ==================== INIT ====================
 function initDesktop() {
-  // Reset all sections first
-  sections.forEach(s => {
-    s.classList.remove('section-active', 'in-view');
-    s.style.position = '';
-    s.style.opacity = '';
-    s.style.pointerEvents = '';
-  });
+  document.body.style.overflow = 'hidden';
+  sections.forEach(s => s.classList.remove('section-active', 'in-view'));
   sections[currentIndex].classList.add('section-active');
   resetAnimations(sections[currentIndex]);
   updateArrows();
 }
 
 function initMobile() {
-  // On mobile all sections are visible via CSS — just trigger animations
+  document.body.style.overflow = '';
   sections.forEach(section => {
     section.classList.add('section-active', 'in-view');
   });
 }
 
-// Run on load
+// Run correct init based on device
 if (isDesktop()) {
   initDesktop();
 } else {
   initMobile();
 }
 
-// ---- Handle resize / orientation change ----
+// ---- Handle orientation/resize ----
 let lastMode = isDesktop() ? 'desktop' : 'mobile';
 
 window.addEventListener('resize', () => {
   const currentMode = isDesktop() ? 'desktop' : 'mobile';
-  if (currentMode !== lastMode) {
-    lastMode = currentMode;
-    if (currentMode === 'desktop') {
-      initDesktop();
-    } else {
-      initMobile();
-    }
+  if (currentMode === lastMode) return;
+  lastMode = currentMode;
+  if (currentMode === 'desktop') {
+    initDesktop();
+  } else {
+    initMobile();
   }
 });
 
@@ -168,7 +160,10 @@ function openModal(id) {
 function closeAllModals() {
   modalOverlay.classList.remove('active');
   modals.forEach(m => m.classList.remove('active'));
-  document.body.style.overflow = '';
+  // Restore correct scroll state
+  if (!isDesktop()) {
+    document.body.style.overflow = '';
+  }
 }
 
 statBoxes.forEach(box => {
