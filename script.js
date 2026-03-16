@@ -179,3 +179,37 @@ modalOverlay.addEventListener('click', () => closeAllModals());
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeAllModals();
 });
+
+// ==================== MOBILE HEADER HIDE ON SCROLL ====================
+if (!isDesktop()) {
+  const header = document.querySelector('header');
+  let lastScrollY = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (isDesktop()) return;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const pageBottom = document.body.scrollHeight - window.innerHeight;
+        const nearBottom = currentScrollY >= pageBottom - 100;
+        const atTop = currentScrollY < 80;
+
+        if (atTop || nearBottom) {
+          header.classList.remove('header-hidden');
+        } else if (currentScrollY > lastScrollY) {
+          // Scrolling down — hide
+          header.classList.add('header-hidden');
+        } else {
+          // Scrolling up — show
+          header.classList.remove('header-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
