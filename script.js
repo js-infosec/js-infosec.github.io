@@ -27,6 +27,9 @@ navMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ==================== DEVICE DETECTION ====================
+const isDesktop = () => window.innerWidth >= 769;
+
 // ==================== SCROLL SYSTEM ====================
 const sections = Array.from(document.querySelectorAll('section'));
 const arrowPrev = document.getElementById('arrow-prev');
@@ -35,9 +38,6 @@ let currentIndex = 0;
 let isTransitioning = false;
 const TRANSITION_DURATION = 600;
 
-const isDesktop = () => window.innerWidth >= 769;
-
-// ---- Update arrow visibility & bounce ----
 function updateArrows() {
   if (!isDesktop()) return;
   arrowPrev.classList.remove('hidden');
@@ -46,27 +46,23 @@ function updateArrows() {
   arrowNext.classList.add('bounce');
 }
 
-// ---- Animation reset ----
 function resetAnimations(section) {
   section.classList.remove('in-view');
   void section.offsetWidth;
   section.classList.add('in-view');
-
-  // After animations complete, remove them so hover states work freely
   setTimeout(() => {
     section.querySelectorAll('.proj-featured, .proj-card').forEach(el => {
       el.style.animation = 'none';
       el.style.opacity = '1';
     });
-  }, 2000);
+  }, 2200);
 }
 
-// ---- Core navigation ----
 function goToSection(targetIndex) {
+  if (!isDesktop()) return;
   if (isTransitioning) return;
   if (targetIndex < 0) targetIndex = sections.length - 1;
   if (targetIndex >= sections.length) targetIndex = 0;
-  // if (targetIndex === currentIndex) return;
 
   isTransitioning = true;
 
@@ -78,11 +74,9 @@ function goToSection(targetIndex) {
   setTimeout(() => {
     current.classList.remove('section-active', 'section-exit');
     currentIndex = targetIndex;
-
     target.classList.add('section-active');
     resetAnimations(target);
     updateArrows();
-
     isTransitioning = false;
   }, TRANSITION_DURATION);
 }
@@ -105,61 +99,63 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     const targetId = link.getAttribute('href').slice(1);
 
     if (!isDesktop()) {
-      // Mobile — smooth scroll to section
       const target = document.getElementById(targetId);
       if (target) target.scrollIntoView({ behavior: 'smooth' });
       return;
     }
 
-    // Desktop — section transition
     const targetIndex = sections.findIndex(s => s.id === targetId);
     if (targetIndex !== -1) goToSection(targetIndex);
   });
 });
 
-// ---- Mobile: vertical swipe ----
-document.addEventListener('touchstart', (e) => {
-  if (!isDesktop()) return;
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  if (!isDesktop()) return;
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
-    if (dy < 0) goToSection(currentIndex + 1);
-    if (dy > 0) goToSection(currentIndex - 1);
-  }
-}, { passive: true });
-
-// ---- Mobile: scroll within a section to trigger next ----
-sections.forEach((section, i) => {
-  section.addEventListener('scroll', () => {
-    if (isDesktop()) return;
-    if (isTransitioning) return;
-
-    const scrolled  = section.scrollTop;
-    const maxScroll = section.scrollHeight - section.clientHeight;
-
-    if (maxScroll < 5) return;
-
-    if (scrolled >= maxScroll - 5) goToSection(i + 1);
-    else if (scrolled <= 5 && i > 0) goToSection(i - 1);
+// ==================== INIT ====================
+function initDesktop() {
+  // Reset all sections first
+  sections.forEach(s => {
+    s.classList.remove('section-active', 'in-view');
+    s.style.position = '';
+    s.style.opacity = '';
+    s.style.pointerEvents = '';
   });
+  sections[currentIndex].classList.add('section-active');
+  resetAnimations(sections[currentIndex]);
+  updateArrows();
+}
+
+function initMobile() {
+  // On mobile all sections are visible via CSS — just trigger animations
+  sections.forEach(section => {
+    section.classList.add('section-active', 'in-view');
+  });
+}
+
+// Run on load
+if (isDesktop()) {
+  initDesktop();
+} else {
+  initMobile();
+}
+
+// ---- Handle resize / orientation change ----
+let lastMode = isDesktop() ? 'desktop' : 'mobile';
+
+window.addEventListener('resize', () => {
+  const currentMode = isDesktop() ? 'desktop' : 'mobile';
+  if (currentMode !== lastMode) {
+    lastMode = currentMode;
+    if (currentMode === 'desktop') {
+      initDesktop();
+    } else {
+      initMobile();
+    }
+  }
 });
-
-// ---- Init ----
-sections[0].classList.add('section-active');
-resetAnimations(sections[0]);
-updateArrows();
-
 
 // ==================== MODALS ====================
 const modalOverlay = document.getElementById('modal-overlay');
-const modals = document.querySelectorAll('.modal');
-const statBoxes = document.querySelectorAll('.stat-box.clickable');
+const modals       = document.querySelectorAll('.modal');
+const statBoxes    = document.querySelectorAll('.stat-box.clickable');
 
 function openModal(id) {
   const modal = document.getElementById(id);
@@ -176,9 +172,7 @@ function closeAllModals() {
 }
 
 statBoxes.forEach(box => {
-  box.addEventListener('click', () => {
-    openModal(box.dataset.modal);
-  });
+  box.addEventListener('click', () => openModal(box.dataset.modal));
 });
 
 document.querySelectorAll('.modal-close').forEach(btn => {

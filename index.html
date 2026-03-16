@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <title>Jack | SOC Analyst</title>
+  <title>Jack Smith | SOC Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
   <header>
-    <a href="#hero">
+    <a href="#hero" id="logo-link">
       <img id="logo" src="img/logo.png" alt="JS-Shield">
     </a>
     <nav>
@@ -32,221 +31,203 @@
     </nav>
   </header>
 
+  <!-- ==================== HERO ==================== -->
   <section id="hero">
     <div id="hero-text">
       <h1>Hi, I'm Jack</h1>
       <h4>SOC Analyst & Cybersecurity Professional</h4>
-      <p>Defense in depth | Every layer assumes the one above it failed.
-      </p>
-      <button>View My Projects</button>
+      <p>Defense in depth | Every layer assumes the one above it failed.</p>
+      <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Projects</button>
     </div>
     <div id="hero-img">
       <img src="img/wave-me.png" alt="Jack">
     </div>
   </section>
 
+  <!-- ==================== ABOUT ==================== -->
   <section id="about">
-  <div class="about-left">
-    <p class="about-eyebrow">// About me</p>
-    <div class="about-first">Jack Smith</div>
-    <div class="about-role">SOC Analyst</div>
-    <div class="about-rule"></div>
+    <div class="about-left">
+      <p class="about-eyebrow">// About me</p>
+      <div class="about-first">Jack Smith</div>
+      <div class="about-role">SOC Analyst</div>
+      <div class="about-rule"></div>
       <p class="about-bio">Security-focused IT professional with 15+ years in customer-facing roles and 2 years of hands-on IT and security work. Day to day I manage endpoints, administer Active Directory across on-premise and cloud environments, and investigate threats using tools like Hybrid Analysis and CrowdStrike Falcon.</p>
-
       <p class="about-bio">I've always been drawn to the investigative side of security — the how, the why, the who. I built a home SOC lab running Security Onion, Kali Linux, and Elastic Agent because the best way to learn defense is to understand offense.</p>
-
       <p class="about-bio">ISC2 CC certified. Currently pursuing CompTIA Security+. Outside the terminal — family guy, car tinkerer, artist, and proud debate opponent of my three kids.</p>
-  </div>
-  <div class="about-right">
-    <div class="about-stats">
-  <div class="stat-box clickable" data-modal="modal-exp">
-    <span class="stat-num">2+</span>
-    <span class="stat-label">Years Exp.</span>
-    <span class="stat-hint">Investigate</span>
-  </div>
-  <div class="stat-box clickable" data-modal="modal-labs">
-    <span class="stat-num">LABS</span>
-    <span class="stat-label">Hands On</span>
-    <span class="stat-hint">Investigate</span>
-  </div>
-  <div class="stat-box clickable" data-modal="modal-certs">
-    <span class="stat-num">3</span>
-    <span class="stat-label">Certs</span>
-    <span class="stat-hint">Investigate</span>
-  </div>
-</div>
-  </div>
-</section>
+    </div>
+    <div class="about-right">
+      <div class="about-stats">
+        <div class="stat-box clickable" data-modal="modal-exp">
+          <span class="stat-num">2+</span>
+          <span class="stat-label">Years Exp.</span>
+          <span class="stat-hint">Investigate</span>
+        </div>
+        <div class="stat-box clickable" data-modal="modal-labs">
+          <span class="stat-num">LABS</span>
+          <span class="stat-label">Hands On</span>
+          <span class="stat-hint">Investigate</span>
+        </div>
+        <div class="stat-box clickable" data-modal="modal-certs">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Certs</span>
+          <span class="stat-hint">Investigate</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ==================== SKILLS ==================== -->
   <section id="skills">
-  <p class="skills-eyebrow">// What I work with</p>
-  <h1 class="skills-title">Skills <span>& Expertise</span></h1>
-  <div class="skills-rule"></div>
-
-  <div class="skills-body">
-    <div class="skills-left">
-      <div class="pill-group">
-        <p class="skills-category-label">Tools & Platforms</p>
-        <div class="pill-row">
-          <span class="pill">CrowdStrike</span>
-          <span class="pill">Microsoft 365</span>
-          <span class="pill">Active Directory</span>
-          <span class="pill">Ninja RMM</span>
-          <span class="pill">Avanan</span>
-          <span class="pill">ConnectWise</span>
-          <span class="pill">Elastic Stack/Kibana</span>
-          <span class="pill">NMAP</span>
-          <span class="pill">Threat Hunting</span>
-          <span class="pill">MITRE ATT&CK</span>
-          <span class="pill">Wireshark</span>
-          <span class="pill">Security Onion</span>
-          <span class="pill">Linux (RHEL/Alma, Kali)</span>
-          <span class="pill">Git</span>
-          <span class="pill">VMware</span>
+    <p class="skills-eyebrow">// What I work with</p>
+    <h1 class="skills-title">Skills <span>& Expertise</span></h1>
+    <div class="skills-rule"></div>
+    <div class="skills-body">
+      <div class="skills-left">
+        <div class="pill-group">
+          <p class="skills-category-label">Tools & Platforms</p>
+          <div class="pill-row">
+            <span class="pill">CrowdStrike</span>
+            <span class="pill">Microsoft 365</span>
+            <span class="pill">Active Directory</span>
+            <span class="pill">Ninja RMM</span>
+            <span class="pill">Avanan</span>
+            <span class="pill">ConnectWise</span>
+            <span class="pill">Elastic Stack / Kibana</span>
+            <span class="pill">NMAP</span>
+            <span class="pill">Threat Hunting</span>
+            <span class="pill">MITRE ATT&CK</span>
+            <span class="pill">Wireshark</span>
+            <span class="pill">Security Onion</span>
+            <span class="pill">Linux (RHEL / Alma / Kali)</span>
+            <span class="pill">Git</span>
+            <span class="pill">VMware</span>
+          </div>
+        </div>
+        <div class="pill-group">
+          <p class="skills-category-label">Soft Skills</p>
+          <div class="pill-row">
+            <span class="pill">Incident Response</span>
+            <span class="pill">Communication</span>
+            <span class="pill">Problem Solving</span>
+            <span class="pill">Attention to Detail</span>
+            <span class="pill">Team Collaboration</span>
+            <span class="pill">Adaptability</span>
+            <span class="pill">Analytical Thinking</span>
+            <span class="pill">Security Mindset</span>
+          </div>
         </div>
       </div>
-
-      <div class="pill-group">
-        <p class="skills-category-label">Soft Skills</p>
-        <div class="pill-row">
-          <span class="pill">Incident Response</span>
-          <span class="pill">Communication</span>
-          <span class="pill">Problem Solving</span>
-          <span class="pill">Attention to Detail</span>
-          <span class="pill">Team Collaboration</span>
-          <span class="pill">Adaptability</span>
-          <span class="pill">Analytical Thinking under Ambiguity</span>
-          <span class="pill">Security Mindset and Threat Awareness</span>
+      <div class="skills-right">
+        <p class="skills-category-label">Certifications</p>
+        <div class="cert-grid">
+          <div class="cert-card earned">
+            <img class="cert-logo" src="img/a-plus.png" alt="CompTIA A+">
+            <span class="cert-name">A+</span>
+            <span class="cert-issuer">CompTIA</span>
+          </div>
+          <div class="cert-card earned">
+            <img class="cert-logo" src="img/isc2-cc.png" alt="ISC2 CC">
+            <span class="cert-name">CC</span>
+            <span class="cert-issuer">ISC2</span>
+          </div>
+          <div class="cert-card earned">
+            <img class="cert-logo" src="img/ms-fund.png" alt="Microsoft MS-900">
+            <span class="cert-name">MS-900</span>
+            <span class="cert-issuer">Microsoft</span>
+          </div>
+          <div class="cert-card in-progress">
+            <span class="cert-badge">In Progress</span>
+            <img class="cert-logo" src="img/Sec-logo.png" alt="Security+">
+            <span class="cert-name">Security+</span>
+            <span class="cert-issuer">CompTIA</span>
+          </div>
+          <div class="cert-card in-progress">
+            <span class="cert-badge">In Progress</span>
+            <img class="cert-logo" src="img/Microsoft-SC-300.png" alt="SC-200">
+            <span class="cert-name">SC-200</span>
+            <span class="cert-issuer">Microsoft</span>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="skills-right">
-      <p class="skills-category-label">Certifications</p>
-      <div class="cert-grid">
-
-        <div class="cert-card earned">
-          <img class="cert-logo" src="img/a-plus.png" alt="CompTIA">
-          <span class="cert-name">A+</span>
-          <span class="cert-issuer">CompTIA</span>
-        </div>
-
-        <div class="cert-card earned">
-          <img class="cert-logo" src="img/isc2-cc.png" alt="ISC2">
-          <span class="cert-name">CC</span>
-          <span class="cert-issuer">ISC2</span>
-        </div>
-
-        <div class="cert-card earned">
-          <img class="cert-logo" src="img/ms-fund.png" alt="Microsoft">
-          <span class="cert-name">MS-900</span>
-          <span class="cert-issuer">Microsoft</span>
-        </div>
-
-        <div class="cert-card in-progress">
-          <span class="cert-badge">In Progress</span>
-          <img class="cert-logo" src="img/Sec-logo.png" alt="CompTIA">
-          <span class="cert-name">Security+</span>
-          <span class="cert-issuer">CompTIA</span>
-        </div>
-
-        <div class="cert-card in-progress">
-          <span class="cert-badge">In Progress</span>
-          <img class="cert-logo" src="img/Microsoft-SC-300.png" alt="Microsoft">
-          <span class="cert-name">SC-200</span>
-          <span class="cert-issuer">Microsoft</span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="projects">
-  <p class="proj-eyebrow">// What I've built</p>
-  <h1 class="proj-title">Projects <span>& Experience</span></h1>
-  <div class="proj-rule"></div>
-
-  <div class="proj-featured">
-    <span class="proj-featured-tag">⭐ Featured Project</span>
-    <h2>Home SOC Lab</h2>
-    <p>Built a fully functional home security operations environment running on a NAS. Hosts a Plex server, Docker containers, and an Alma Linux 9 Apache web server. An Elastic Agent reports logs back to Security Onion inside a VM on a Kali Linux laptop. Uses Kali to simulate real attacks against the Apache server — all activity caught, logged, and triaged through the SO-Lab dashboard.</p>
-    <div class="proj-tags">
-      <span class="proj-tag">Security Onion</span>
-      <span class="proj-tag">Elastic Agent</span>
-      <span class="proj-tag">Kali Linux</span>
-      <span class="proj-tag">Alma Linux 9</span>
-      <span class="proj-tag">Apache</span>
-      <span class="proj-tag">Docker</span>
-      <span class="proj-tag">SIEM</span>
-      <span class="proj-tag">Threat Detection</span>
-    </div>
-  </div>
-
-  <div class="proj-grid">
-    <div class="proj-card">
-      <p class="proj-card-label">Community</p>
-      <h3>CTF & Threat Simulation</h3>
-      <p>Active on TryHackMe and HackTheBox, regularly competing in Capture The Flag challenges with a dedicated group. Builds both offensive and defensive thinking by solving real-world attack and detection scenarios.</p>
+  <!-- ==================== PROJECTS ==================== -->
+  <section id="projects">
+    <p class="proj-eyebrow">// What I've built</p>
+    <h1 class="proj-title">Projects <span>& Experience</span></h1>
+    <div class="proj-rule"></div>
+    <div class="proj-featured">
+      <span class="proj-featured-tag">⭐ Featured Project</span>
+      <h2>Home SOC Lab</h2>
+      <p>Built a fully functional home security operations environment running on a NAS. Hosts a Plex server, Docker containers, and an Alma Linux 9 Apache web server. An Elastic Agent reports logs back to Security Onion inside a VM on a Kali Linux laptop. Uses Kali to simulate real attacks against the Apache server — all activity caught, logged, and triaged through the SO-Lab dashboard.</p>
       <div class="proj-tags">
-        <span class="proj-tag">TryHackMe</span>
-        <span class="proj-tag">HackTheBox</span>
-        <span class="proj-tag">CTF</span>
-        <span class="proj-tag">Penetration Testing</span>
+        <span class="proj-tag">Security Onion</span>
+        <span class="proj-tag">Elastic Agent</span>
+        <span class="proj-tag">Kali Linux</span>
+        <span class="proj-tag">Alma Linux 9</span>
+        <span class="proj-tag">Apache</span>
+        <span class="proj-tag">Docker</span>
+        <span class="proj-tag">SIEM</span>
+        <span class="proj-tag">Threat Detection</span>
       </div>
     </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <p class="proj-card-label">Community</p>
+        <h3>CTF & Threat Simulation</h3>
+        <p>Active on TryHackMe and HackTheBox, regularly competing in Capture The Flag challenges with a dedicated group. Builds both offensive and defensive thinking by solving real-world attack and detection scenarios.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">TryHackMe</span>
+          <span class="proj-tag">HackTheBox</span>
+          <span class="proj-tag">CTF</span>
+          <span class="proj-tag">Penetration Testing</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <p class="proj-card-label">MSP</p>
+        <h3>Endpoint Management | IT Support | Email Analysis</h3>
+        <p>Day-to-day responsibilities include creating and resolving tickets across multiple client environments, triaging and troubleshooting endpoint issues, and reviewing quarantined emails for release or escalation. Handles user provisioning in Microsoft 365 and Active Directory, manages device onboarding and offboarding, and supports clients across diverse infrastructure stacks.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Ticket Management</span>
+          <span class="proj-tag">Microsoft 365</span>
+          <span class="proj-tag">Active Directory</span>
+          <span class="proj-tag">Email Analysis</span>
+          <span class="proj-tag">Avanan</span>
+          <span class="proj-tag">Endpoint Troubleshooting</span>
+          <span class="proj-tag">User Provisioning</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="proj-card">
-  <p class="proj-card-label">MSP</p>
-  <h3>Endpoint Management | IT Support | Email Analysis</h3>
-  <p>Day-to-day responsibilities include creating and resolving tickets across multiple client environments, triaging and troubleshooting endpoint issues, and reviewing quarantined emails for release or escalation. Handles user provisioning in Microsoft 365 and Active Directory, manages device onboarding and offboarding, and supports clients across diverse infrastructure stacks — applying structured troubleshooting and clear communication at every step.</p>
-  <div class="proj-tags">
-    <span class="proj-tag">Ticket Management</span>
-    <span class="proj-tag">Microsoft 365</span>
-    <span class="proj-tag">Active Directory</span>
-    <span class="proj-tag">Email Analysis</span>
-    <span class="proj-tag">Avanan</span>
-    <span class="proj-tag">Endpoint Troubleshooting</span>
-    <span class="proj-tag">User Provisioning</span>
-  </div>
-</div>
-  </div>
-</section>
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact">
+    <p class="contact-eyebrow">// Get in touch</p>
+    <h1 class="contact-title">Let's <span>Connect</span></h1>
+    <div class="contact-rule"></div>
+    <p class="contact-sub">Open to Junior SOC Analyst roles and cybersecurity opportunities. Feel free to reach out — I'd love to talk.</p>
+    <div class="contact-icons">
+      <a href="mailto:jack@js-analyst.tech" class="contact-icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/infosecjs/" target="_blank" class="contact-icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="4"/>
+          <line x1="8" y1="11" x2="8" y2="16"/>
+          <line x1="8" y1="8" x2="8" y2="8.5"/>
+          <path d="M12 11v5M12 14a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </a>
+    </div>
+    <p class="contact-footer">© 2025 Jack Smith — JS-INFOSEC.TECH</p>
+  </section>
 
-  
-<section id="contact">
-  <p class="contact-eyebrow">// Get in touch</p>
-  <h1 class="contact-title">Let's <span>Connect</span></h1>
-  <div class="contact-rule"></div>
-  <p class="contact-sub">Open to Junior SOC Analyst roles and cybersecurity opportunities. Feel free to reach out — I'd love to talk.</p>
-
-  <div class="contact-icons">
-    <a href="mailto:jack@js-analyst.tech" class="contact-icon-link" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <polyline points="2,4 12,13 22,4"/>
-      </svg>
-    </a>
-
-    <a href="https://www.linkedin.com/in/infosecjs/" target="_blank" class="contact-icon-link" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="4"/>
-        <line x1="8" y1="11" x2="8" y2="16"/>
-        <line x1="8" y1="8" x2="8" y2="8.5"/>
-        <path d="M12 11v5M12 14a3 3 0 0 1 6 0v2"/>
-      </svg>
-    </a>
-  </div>
-
-  <p class="contact-footer">© 2025 Jack Smith — JS-INFOSEC.TECH</p>
-</section>
-
-
-<!-- HTML for after the page loads COntroled by JS -------------------------------------------------------------------------------------
- -------------------------------------------------------------------------------------------------------------------------------------->
-
- <button class="section-arrow" id="arrow-prev" aria-label="Previous section">
+  <!-- ==================== ARROWS ==================== -->
+  <button class="section-arrow" id="arrow-prev" aria-label="Previous section">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="11"/>
       <polyline points="13 8 9 12 13 16"/>
@@ -259,133 +240,126 @@
     </svg>
   </button>
 
+  <!-- ==================== MODAL OVERLAY ==================== -->
+  <div id="modal-overlay" class="modal-overlay"></div>
 
-    <!-- Modal Overlay -->
-<div id="modal-overlay" class="modal-overlay"></div>
-
-<!-- Experience Modal -->
-<div id="modal-exp" class="modal">
-  <button class="modal-close" data-modal="modal-exp">✕</button>
-  <p class="modal-eyebrow">// Work History</p>
-  <h2 class="modal-title">Experience</h2>
-  <div class="modal-rule"></div>
-
-  <div class="modal-timeline">
-  <div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-content">
-      <span class="timeline-date">2023 — Present</span>
-      <h3>Endpoint Management | IT Support | Email Analysis</h3>
-      <p class="timeline-company">MSP — Managed Service Provider</p>
-      <p>Day-to-day responsibilities include creating and resolving tickets across multiple client environments, triaging and troubleshooting endpoint issues, and reviewing quarantined emails for release or escalation. Handles user provisioning in Microsoft 365 and Active Directory, manages device onboarding and offboarding, and supports clients across diverse infrastructure stacks — applying structured troubleshooting and clear communication at every step.</p>
-      <div class="timeline-tags">
-        <span class="proj-tag">Ticket Management</span>
-        <span class="proj-tag">Microsoft 365</span>
-        <span class="proj-tag">Active Directory</span>
-        <span class="proj-tag">Email Analysis</span>
-        <span class="proj-tag">Avanan</span>
-        <span class="proj-tag">Endpoint Troubleshooting</span>
-        <span class="proj-tag">User Provisioning</span>
+  <!-- Experience Modal -->
+  <div id="modal-exp" class="modal">
+    <button class="modal-close" data-modal="modal-exp">✕</button>
+    <p class="modal-eyebrow">// Work History</p>
+    <h2 class="modal-title">Experience</h2>
+    <div class="modal-rule"></div>
+    <div class="modal-timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2023 — Present</span>
+          <h3>Endpoint Management | IT Support | Email Analysis</h3>
+          <p class="timeline-company">MSP — Managed Service Provider</p>
+          <p>Day-to-day responsibilities include creating and resolving tickets across multiple client environments, triaging and troubleshooting endpoint issues, and reviewing quarantined emails for release or escalation. Handles user provisioning in Microsoft 365 and Active Directory, manages device onboarding and offboarding, and supports clients across diverse infrastructure stacks — applying structured troubleshooting and clear communication at every step.</p>
+          <div class="timeline-tags">
+            <span class="proj-tag">Ticket Management</span>
+            <span class="proj-tag">Microsoft 365</span>
+            <span class="proj-tag">Active Directory</span>
+            <span class="proj-tag">Email Analysis</span>
+            <span class="proj-tag">Avanan</span>
+            <span class="proj-tag">Endpoint Troubleshooting</span>
+            <span class="proj-tag">User Provisioning</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Ongoing</span>
+          <h3>Home SOC Lab</h3>
+          <p class="timeline-company">Self-Built Security Operations Environment</p>
+          <p>Built and maintain a personal SOC environment running on a NAS, hosting Alma Linux 9 with Apache, Docker containers, and Plex. An Elastic Agent on the server ships logs to Security Onion running inside a VM on a Kali Linux laptop. Uses Kali to simulate real attacks — scanning, exploitation attempts, and brute force — with all activity caught, logged, and triaged through the SO-Lab dashboard. Future plans include expanding detection rules, integrating additional log sources, building custom dashboards, and simulating more advanced threat scenarios including lateral movement and persistence techniques.</p>
+          <div class="timeline-tags">
+            <span class="proj-tag">Security Onion</span>
+            <span class="proj-tag">Elastic Agent</span>
+            <span class="proj-tag">Kali Linux</span>
+            <span class="proj-tag">Alma Linux 9</span>
+            <span class="proj-tag">Apache</span>
+            <span class="proj-tag">Docker</span>
+            <span class="proj-tag">SIEM</span>
+            <span class="proj-tag">Threat Detection</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-    <div class="timeline-item">
-  <div class="timeline-dot"></div>
-  <div class="timeline-content">
-    <span class="timeline-date">Ongoing</span>
-    <h3>Home SOC Lab</h3>
-    <p class="timeline-company">Self-Built Security Operations Environment</p>
-    <p>Built and maintain a personal SOC environment running on a NAS, hosting Alma Linux 9 with Apache, Docker containers, and Plex. An Elastic Agent on the server ships logs to Security Onion running inside a VM on a Kali Linux laptop. Uses Kali to simulate real attacks against the Apache server — scanning, exploitation attempts, and brute force — with all activity caught, logged, and triaged through the SO-Lab dashboard. Future plans include expanding detection rules, integrating additional log sources, building custom dashboards, and simulating more advanced threat scenarios including lateral movement and persistence techniques.</p>
-    <div class="timeline-tags">
-      <span class="proj-tag">Security Onion</span>
-      <span class="proj-tag">Elastic Agent</span>
-      <span class="proj-tag">Kali Linux</span>
-      <span class="proj-tag">Alma Linux 9</span>
-      <span class="proj-tag">Apache</span>
-      <span class="proj-tag">Docker</span>
-      <span class="proj-tag">SIEM</span>
-      <span class="proj-tag">Threat Detection</span>
-    </div>
-  </div>
-</div>
-  </div>
-</div>
-
-<!-- Labs Modal -->
-<div id="modal-labs" class="modal">
-  <button class="modal-close" data-modal="modal-labs">✕</button>
-  <p class="modal-eyebrow">// Hands-on Work</p>
-  <h2 class="modal-title">Labs & Training</h2>
-  <div class="modal-rule"></div>
-
-  <div class="modal-cards">
-    <div class="modal-card">
-      <p class="proj-card-label">Home Lab</p>
-      <h3>Home SOC Environment</h3>
-      <p>NAS-hosted lab running Alma Linux 9, Apache, Docker, and Plex. Elastic Agent reports to Security Onion in a VM. Kali Linux used to simulate attacks — all activity logged and triaged through SO-Lab dashboard.</p>
-      <div class="timeline-tags">
-        <span class="proj-tag">Security Onion</span>
-        <span class="proj-tag">Elastic Agent</span>
-        <span class="proj-tag">Kali Linux</span>
-        <span class="proj-tag">Docker</span>
-        <span class="proj-tag">SIEM</span>
+  <!-- Labs Modal -->
+  <div id="modal-labs" class="modal">
+    <button class="modal-close" data-modal="modal-labs">✕</button>
+    <p class="modal-eyebrow">// Hands-on Work</p>
+    <h2 class="modal-title">Labs & Training</h2>
+    <div class="modal-rule"></div>
+    <div class="modal-cards">
+      <div class="modal-card">
+        <p class="proj-card-label">Home Lab</p>
+        <h3>Home SOC Environment</h3>
+        <p>NAS-hosted lab running Alma Linux 9, Apache, Docker, and Plex. Elastic Agent reports to Security Onion in a VM. Kali Linux used to simulate attacks — all activity logged and triaged through SO-Lab dashboard.</p>
+        <div class="timeline-tags">
+          <span class="proj-tag">Security Onion</span>
+          <span class="proj-tag">Elastic Agent</span>
+          <span class="proj-tag">Kali Linux</span>
+          <span class="proj-tag">Docker</span>
+          <span class="proj-tag">SIEM</span>
+        </div>
       </div>
-    </div>
-
-    <div class="modal-card">
-      <p class="proj-card-label">CTF & Platforms</p>
-      <h3>TryHackMe & HackTheBox</h3>
-      <p>Active on both platforms, working through offensive and defensive challenges. Regularly competes in CTF events with a dedicated group, building real-world attack and detection skills.</p>
-      <div class="timeline-tags">
-        <span class="proj-tag">TryHackMe</span>
-        <span class="proj-tag">HackTheBox</span>
-        <span class="proj-tag">CTF</span>
-        <span class="proj-tag">Penetration Testing</span>
+      <div class="modal-card">
+        <p class="proj-card-label">CTF & Platforms</p>
+        <h3>TryHackMe & HackTheBox</h3>
+        <p>Active on both platforms, working through offensive and defensive challenges. Regularly competes in CTF events with a dedicated group, building real-world attack and detection skills.</p>
+        <div class="timeline-tags">
+          <span class="proj-tag">TryHackMe</span>
+          <span class="proj-tag">HackTheBox</span>
+          <span class="proj-tag">CTF</span>
+          <span class="proj-tag">Penetration Testing</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Certs Modal -->
-<div id="modal-certs" class="modal">
-  <button class="modal-close" data-modal="modal-certs">✕</button>
-  <p class="modal-eyebrow">// Credentials</p>
-  <h2 class="modal-title">Certifications</h2>
-  <div class="modal-rule"></div>
-
-  <div class="cert-grid">
-    <div class="cert-card earned">
-      <img class="cert-logo" src="img/a-plus.png" alt="CompTIA">
-      <span class="cert-name">A+</span>
-      <span class="cert-issuer">CompTIA</span>
-    </div>
-    <div class="cert-card earned">
-      <img class="cert-logo" src="img/isc2-cc.png" alt="ISC2">
-      <span class="cert-name">CC</span>
-      <span class="cert-issuer">ISC2</span>
-    </div>
-    <div class="cert-card earned">
-      <img class="cert-logo" src="img/ms-fund.png" alt="Microsoft">
-      <span class="cert-name">MS-900</span>
-      <span class="cert-issuer">Microsoft</span>
-    </div>
-    <div class="cert-card in-progress">
-      <span class="cert-badge">In Progress</span>
-      <img class="cert-logo" src="img/Sec-logo.png" alt="CompTIA">
-      <span class="cert-name">Security+</span>
-      <span class="cert-issuer">CompTIA</span>
-    </div>
-    <div class="cert-card in-progress">
-      <span class="cert-badge">In Progress</span>
-      <img class="cert-logo" src="img/Microsoft-SC-300.png" alt="Microsoft">
-      <span class="cert-name">SC-200</span>
-      <span class="cert-issuer">Microsoft</span>
+  <!-- Certs Modal -->
+  <div id="modal-certs" class="modal">
+    <button class="modal-close" data-modal="modal-certs">✕</button>
+    <p class="modal-eyebrow">// Credentials</p>
+    <h2 class="modal-title">Certifications</h2>
+    <div class="modal-rule"></div>
+    <div class="cert-grid">
+      <div class="cert-card earned">
+        <img class="cert-logo" src="img/a-plus.png" alt="CompTIA A+">
+        <span class="cert-name">A+</span>
+        <span class="cert-issuer">CompTIA</span>
+      </div>
+      <div class="cert-card earned">
+        <img class="cert-logo" src="img/isc2-cc.png" alt="ISC2 CC">
+        <span class="cert-name">CC</span>
+        <span class="cert-issuer">ISC2</span>
+      </div>
+      <div class="cert-card earned">
+        <img class="cert-logo" src="img/ms-fund.png" alt="Microsoft MS-900">
+        <span class="cert-name">MS-900</span>
+        <span class="cert-issuer">Microsoft</span>
+      </div>
+      <div class="cert-card in-progress">
+        <span class="cert-badge">In Progress</span>
+        <img class="cert-logo" src="img/Sec-logo.png" alt="Security+">
+        <span class="cert-name">Security+</span>
+        <span class="cert-issuer">CompTIA</span>
+      </div>
+      <div class="cert-card in-progress">
+        <span class="cert-badge">In Progress</span>
+        <img class="cert-logo" src="img/Microsoft-SC-300.png" alt="SC-200">
+        <span class="cert-name">SC-200</span>
+        <span class="cert-issuer">Microsoft</span>
+      </div>
     </div>
   </div>
-</div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
