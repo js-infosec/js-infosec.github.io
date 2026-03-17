@@ -993,7 +993,7 @@ section.section-active {
 
   section {
     min-height: 100svh;
-    padding: 4rem 1.5rem 2rem;
+    padding: 4rem 1.5rem 2rem !important;
     justify-content: flex-start;
   }
 
@@ -1003,7 +1003,7 @@ section.section-active {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 4rem 1.5rem 1.5rem;
+    padding: 4rem 1.5rem 1.5rem !important;
   }
 
   #hero-text {
