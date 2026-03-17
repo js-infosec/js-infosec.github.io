@@ -27,6 +27,9 @@ navMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
+
+
+
 // ==================== DEVICE DETECTION ====================
 const isDesktop = () => window.innerWidth >= 769;
 
