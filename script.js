@@ -33,10 +33,10 @@ const isLandscapePhone = () => window.innerWidth <= 1024 && window.innerHeight <
 const isMobileMode     = () => !isDesktop() || isLandscapePhone();
 
 // ==================== SCROLL SYSTEM ====================
-const sections = Array.from(document.querySelectorAll('section'));
+const sections  = Array.from(document.querySelectorAll('section'));
 const arrowPrev = document.getElementById('arrow-prev');
 const arrowNext = document.getElementById('arrow-next');
-let currentIndex = 0;
+let currentIndex    = 0;
 let isTransitioning = false;
 const TRANSITION_DURATION = 600;
 
@@ -54,7 +54,7 @@ function resetAnimations(section) {
   setTimeout(() => {
     section.querySelectorAll('.proj-featured, .proj-card').forEach(el => {
       el.style.animation = 'none';
-      el.style.opacity = '1';
+      el.style.opacity   = '1';
     });
   }, 2200);
 }
@@ -78,7 +78,7 @@ function goToSection(targetIndex) {
     resetAnimations(target);
     updateArrows();
 
-    // ---- Update active nav link ----
+    // Update active nav link
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.classList.remove('nav-active');
       if (link.getAttribute('href') === `#${target.id}`) {
@@ -94,7 +94,7 @@ function goToSection(targetIndex) {
 arrowPrev.addEventListener('click', () => goToSection(currentIndex - 1));
 arrowNext.addEventListener('click', () => goToSection(currentIndex + 1));
 
-// ---- Arrow key navigation (desktop only) ----
+// ---- Arrow key navigation ----
 document.addEventListener('keydown', (e) => {
   if (isMobileMode()) return;
   if (e.key === 'ArrowRight') goToSection(currentIndex + 1);
@@ -170,9 +170,7 @@ function openModal(id) {
 function closeAllModals() {
   modalOverlay.classList.remove('active');
   modals.forEach(m => m.classList.remove('active'));
-  if (isMobileMode()) {
-    document.body.style.overflow = '';
-  }
+  if (isMobileMode()) document.body.style.overflow = '';
 }
 
 statBoxes.forEach(box => {
@@ -195,9 +193,9 @@ if (isMobileMode()) {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY || document.documentElement.scrollTop;
-    const pageBottom = document.body.scrollHeight - window.innerHeight;
-    const atTop = currentScrollY < 80;
-    const atBottom = currentScrollY >= pageBottom - 100;
+    const pageBottom     = document.body.scrollHeight - window.innerHeight;
+    const atTop          = currentScrollY < 80;
+    const atBottom       = currentScrollY >= pageBottom - 150;
 
     if (atTop || atBottom) {
       header.classList.remove('header-hidden');

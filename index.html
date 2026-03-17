@@ -38,10 +38,9 @@
       <h4>SOC Analyst & Cybersecurity Professional</h4>
       <p>Defense in depth | Every layer assumes the one above it failed.</p>
       <button onclick="window.innerWidth >= 769 ? goToSection(sections.findIndex(s => s.id === 'projects')) : document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Projects</button>
-      <!-- <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Projects</button> -->
     </div>
     <div id="hero-img">
-      <img src="img/wave-me.png" alt="Jack">
+      <canvas id="hero-canvas"></canvas>
     </div>
   </section>
 
@@ -254,7 +253,7 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <span class="timeline-date">2025 — Present</span>
+          <span class="timeline-date">2023 — Present</span>
           <h3>Endpoint Management | IT Support | Email Analysis</h3>
           <p class="timeline-company">MSP — Managed Service Provider</p>
           <p>Day-to-day responsibilities include creating and resolving tickets across multiple client environments, triaging and troubleshooting endpoint issues, and reviewing quarantined emails for release or escalation. Handles user provisioning in Microsoft 365 and Active Directory, manages device onboarding and offboarding, and supports clients across diverse infrastructure stacks — applying structured troubleshooting and clear communication at every step.</p>
@@ -361,6 +360,10 @@
     </div>
   </div>
 
+  <!-- Scripts: Three.js first, then app scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
+  <script src="shield.js"></script>
+
 </body>
 </html>
