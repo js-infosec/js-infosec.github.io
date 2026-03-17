@@ -981,15 +981,19 @@ section.section-active {
 
 /* ==================== LANDSCAPE PHONE ==================== */
 @media (max-width: 768px) and (orientation: landscape) {
-  
+
+  :root {
+    --header-h: 3.5rem;
+  }
+
   header {
-    padding: 0.5rem 2rem 0.5rem 0;
-    height: 4rem;
+    height: 3.5rem;
+    padding: 0 1.5rem 0 0;
   }
 
   section {
     min-height: 100svh;
-    padding: 4.5rem 1.5rem 2rem;
+    padding: 4rem 1.5rem 2rem;
     justify-content: flex-start;
   }
 
@@ -999,22 +1003,21 @@ section.section-active {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 4.5rem 1.5rem 2rem;
-    min-height: 100svh;
+    padding: 4rem 1.5rem 1.5rem;
   }
 
   #hero-text {
     align-items: flex-start;
-    max-width: 55%;
+    max-width: 58%;
   }
 
-  #hero h1 { font-size: 1.8rem; }
-  #hero h4 { font-size: 0.95rem; }
-  #hero p  { font-size: 0.85rem; max-width: 100%; }
+  #hero h1 { font-size: 1.7rem; }
+  #hero h4 { font-size: 0.9rem; }
+  #hero p  { font-size: 0.82rem; }
 
-  #hero button {
-    padding: 0.5rem 1.4rem;
-    font-size: 0.9rem;
+  #hero button, .hero-btn {
+    padding: 0.45rem 1.2rem;
+    font-size: 0.85rem;
   }
 
   #hero-img {
@@ -1026,7 +1029,7 @@ section.section-active {
   }
 
   #hero-img img {
-    height: 85%;
+    height: 88%;
     width: auto;
     object-fit: contain;
     object-position: bottom;
@@ -1035,15 +1038,23 @@ section.section-active {
   .about-first,
   .about-role { font-size: 1.6rem; }
 
-  .about-bio { font-size: 13px; }
+  .about-bio { font-size: 12px; }
 
-  .skills-title { font-size: 1.8rem; }
-  .skills-title span { font-size: 1.5rem; }
+  .skills-title { font-size: 1.7rem; }
+  .skills-title span { font-size: 1.4rem; }
 
-  .proj-title { font-size: 1.8rem; }
-  .proj-title span { font-size: 1.5rem; }
+  .proj-title { font-size: 1.7rem; }
+  .proj-title span { font-size: 1.4rem; }
 
-  .contact-title { font-size: 2rem; }
+  .contact-title { font-size: 1.8rem; }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stat-num { font-size: 1.1rem; }
+  .stat-label { font-size: 8px; }
 }
 
 /* ==================== MID SIZE (769px - 1024px) ==================== */
