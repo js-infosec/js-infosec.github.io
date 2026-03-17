@@ -78,6 +78,15 @@ function goToSection(targetIndex) {
     target.classList.add('section-active');
     resetAnimations(target);
     updateArrows();
+
+      // ---- Update active nav link ----
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.classList.remove('nav-active');
+      if (link.getAttribute('href') === `#${target.id}`) {
+        link.classList.add('nav-active');
+      }
+    });
+
     isTransitioning = false;
   }, TRANSITION_DURATION);
 }
