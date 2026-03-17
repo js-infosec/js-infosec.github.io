@@ -980,10 +980,21 @@ section.section-active {
 .section-arrow { display: none; }
 
 /* ==================== LANDSCAPE PHONE ==================== */
-@media (max-width: 768px) and (orientation: landscape) {
+@media (max-width: 1024px) and (orientation: landscape) and (max-height: 500px) {
 
-  :root {
-    --header-h: 3.5rem;
+  :root { --header-h: 3.5rem; }
+
+  body { overflow-y: auto !important; }
+
+  section {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 100svh !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    padding: 4rem 1.5rem 2rem !important;
+    justify-content: flex-start !important;
   }
 
   header {
@@ -991,26 +1002,20 @@ section.section-active {
     padding: 0 1.5rem 0 0;
   }
 
-  section {
-    min-height: 100svh;
-    padding: 4rem 1.5rem 2rem !important;
-    justify-content: flex-start;
-  }
+  .nav-menu li a {
+  font-size: .5rem;
+}
 
   #hero {
-    flex-direction: row;
-    text-align: left;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
+    flex-direction: row !important;
+    text-align: left !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1.5rem !important;
     padding: 4rem 1.5rem 1.5rem !important;
   }
 
-  #hero-text {
-    align-items: flex-start;
-    max-width: 58%;
-  }
-
+  #hero-text { align-items: flex-start !important; max-width: 58%; }
   #hero h1 { font-size: 1.7rem; }
   #hero h4 { font-size: 0.9rem; }
   #hero p  { font-size: 0.82rem; }
@@ -1021,40 +1026,41 @@ section.section-active {
   }
 
   #hero-img {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: flex-end;
-    width: 38%;
+    width: 35%;
     height: 100svh;
+    opacity: 1 !important;
   }
 
   #hero-img img {
-    height: 88%;
+    height: 85%;
     width: auto;
     object-fit: contain;
     object-position: bottom;
+    animation: none !important;
   }
 
-  .about-first,
-  .about-role { font-size: 1.6rem; }
-
+  .about-first, .about-role { font-size: 1.6rem; }
   .about-bio { font-size: 12px; }
-
   .skills-title { font-size: 1.7rem; }
   .skills-title span { font-size: 1.4rem; }
-
   .proj-title { font-size: 1.7rem; }
   .proj-title span { font-size: 1.4rem; }
-
   .contact-title { font-size: 1.8rem; }
+  .section-arrow { display: none !important; }
 
-  .about-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+   #contact {
+    padding: 5rem 1.5rem .5rem !important;
+    justify-content: center !important;
+    padding-top: calc(var(--header-h) + 2rem);
   }
 
-  .stat-num { font-size: 1.1rem; }
-  .stat-label { font-size: 8px; }
+  header.header-visible-bottom {
+    background-color: rgba(1, 17, 40, 0.95);
+    backdrop-filter: blur(8px);
+  }
 }
 
 /* ==================== MID SIZE (769px - 1024px) ==================== */
@@ -1093,7 +1099,7 @@ section.section-active {
     border: none;
     border-radius: 0;
     padding: 0;
-    gap: 2rem;
+    gap: 1rem;
     opacity: 0;
     transform: scale(1);
     pointer-events: all;

@@ -27,13 +27,12 @@ navMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
-
-
-
 // ==================== DEVICE DETECTION ====================
-const isDesktop = () => window.innerWidth >= 769;
+const isDesktop        = () => window.innerWidth >= 769;
+const isLandscapePhone = () => window.innerWidth <= 1024 && window.innerHeight < 500;
+const isMobileMode     = () => !isDesktop() || isLandscapePhone();
 
-// ==================== SCROLL SYSTEM (DESKTOP ONLY) ====================
+// ==================== SCROLL SYSTEM ====================
 const sections = Array.from(document.querySelectorAll('section'));
 const arrowPrev = document.getElementById('arrow-prev');
 const arrowNext = document.getElementById('arrow-next');
@@ -79,7 +78,7 @@ function goToSection(targetIndex) {
     resetAnimations(target);
     updateArrows();
 
-      // ---- Update active nav link ----
+    // ---- Update active nav link ----
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.classList.remove('nav-active');
       if (link.getAttribute('href') === `#${target.id}`) {
@@ -95,9 +94,9 @@ function goToSection(targetIndex) {
 arrowPrev.addEventListener('click', () => goToSection(currentIndex - 1));
 arrowNext.addEventListener('click', () => goToSection(currentIndex + 1));
 
-// ---- Arrow key navigation ----
+// ---- Arrow key navigation (desktop only) ----
 document.addEventListener('keydown', (e) => {
-  if (!isDesktop()) return;
+  if (isMobileMode()) return;
   if (e.key === 'ArrowRight') goToSection(currentIndex + 1);
   if (e.key === 'ArrowLeft')  goToSection(currentIndex - 1);
 });
@@ -108,7 +107,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     e.preventDefault();
     const targetId = link.getAttribute('href').slice(1);
 
-    if (!isDesktop()) {
+    if (isMobileMode()) {
       const target = document.getElementById(targetId);
       if (target) target.scrollIntoView({ behavior: 'smooth' });
       return;
@@ -135,18 +134,17 @@ function initMobile() {
   });
 }
 
-// Run correct init based on device
-if (isDesktop()) {
-  initDesktop();
-} else {
+if (isMobileMode()) {
   initMobile();
+} else {
+  initDesktop();
 }
 
 // ---- Handle orientation/resize ----
-let lastMode = isDesktop() ? 'desktop' : 'mobile';
+let lastMode = isMobileMode() ? 'mobile' : 'desktop';
 
 window.addEventListener('resize', () => {
-  const currentMode = isDesktop() ? 'desktop' : 'mobile';
+  const currentMode = isMobileMode() ? 'mobile' : 'desktop';
   if (currentMode === lastMode) return;
   lastMode = currentMode;
   if (currentMode === 'desktop') {
@@ -172,8 +170,7 @@ function openModal(id) {
 function closeAllModals() {
   modalOverlay.classList.remove('active');
   modals.forEach(m => m.classList.remove('active'));
-  // Restore correct scroll state
-  if (!isDesktop()) {
+  if (isMobileMode()) {
     document.body.style.overflow = '';
   }
 }
@@ -193,13 +190,11 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ==================== MOBILE HEADER HIDE ON SCROLL ====================
-if (!isDesktop()) {
+if (isMobileMode()) {
   const header = document.querySelector('header');
 
-  window.addEventListener('scroll', () => {
-    if (isDesktop()) return;
-
-    const currentScrollY = window.scrollY;
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY || document.documentElement.scrollTop;
     const pageBottom = document.body.scrollHeight - window.innerHeight;
     const atTop = currentScrollY < 80;
     const atBottom = currentScrollY >= pageBottom - 100;
@@ -209,5 +204,8 @@ if (!isDesktop()) {
     } else {
       header.classList.add('header-hidden');
     }
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  document.addEventListener('scroll', handleScroll, { passive: true });
 }
